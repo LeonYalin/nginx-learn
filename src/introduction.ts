@@ -1,18 +1,16 @@
 import { delimeterMsg, logF, logToHTML } from "./utils";
 
-function diagramBuildingBlocks() {
+function aboutNginx() {
   logToHTML(`
-    Diagram block types:
+    Nginx is a web server. It can be used as a reverse proxy or for routing.
 
-    - Service. Drawn as a box with a name inside. Usually hidden by a load balancer inside the cluster. Don't draw the load balancer, draw a multi-box.
-    - Users. Draw with a user icon.
-    - Databases. Drawn as a barrel with a name inside.
-    - HTTP calls. Drawn as a solid arrow with the call name (with parameters), e.g. -- GET /user/:id -->
-    - Queues and async communnication. Drawn with a dotted line, e.g. - - - - - >
+    - Its model uses concurrency to handle requests, therefore is is faster than Apache, that is limited to number of threads and connections.
+    - it is serving static files faster because it does not invoke code then serving static files.
+    - Nginx interprets requests as a URI lications, thereas Apache interprets them as a filesystem locations, e.g. /images vs /c/program files/app/images
     `);
 }
 
 export default function introduction() {
   delimeterMsg('INTRODUCTION');
-  logF(diagramBuildingBlocks);
+  logF(aboutNginx);
 }
