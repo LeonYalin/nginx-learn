@@ -29,7 +29,9 @@ RUN cd nginx-1.21.6 && ./configure \
   --http-log-path=/var/log/nginx/access.log \
   --with-pcre \
   --pid-path=/var/run/nginx.pid \
-  --with-http_ssl_module
+  --with-http_ssl_module \
+  --with-http_image_filter_module=dynamic \
+  --modules-path=/etc/nginx/modules
 
 # compile and install the nginx binary
 RUN cd nginx-1.21.6 && make && make install

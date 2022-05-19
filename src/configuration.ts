@@ -10,7 +10,6 @@ function understandingNginxConfiguration() {
     - see nginx.conf for more details.
     - use "curl -I nginx-learn.com/style.css" to check a file mime type
     - see the "nginx.conf" for configuration options and explanations.
-
     `);
 }
 

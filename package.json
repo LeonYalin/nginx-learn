@@ -47,7 +47,8 @@
     "server:prod": "cross-env NODE_ENV=production webpack-dev-server  --mode production --config ./webpack.config.js --port 3000 --host 0.0.0.0 --hot --inline --progress  --watch --open --content-base dist/",
     "start": "npm run server:dev",
     "test": "karma start",
-    "nginx:cli": "docker exec -it nginx-learn-proxy-1 sh"
+    "nginx:cli": "docker exec -it nginx-learn-proxy-1 sh",
+    "docker:run": "docker run -d -p 80:80 -v /Users/lyalin/code/nginx-learn/src/config/nginx.conf:/etc/nginx/nginx.conf -v /Users/lyalin/code/nginx-learn/src/www:/www mynginx"
   },
   "version": "0.0.1"
 }
