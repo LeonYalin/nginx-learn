@@ -30,12 +30,21 @@ RUN cd nginx-1.21.6 && ./configure \
   --with-pcre \
   --pid-path=/var/run/nginx.pid \
   --with-http_ssl_module \
+  --with-http_v2_module \
   --with-http_image_filter_module=dynamic \
   --modules-path=/etc/nginx/modules
 
 # compile and install the nginx binary
 RUN cd nginx-1.21.6 && make && make install
 EXPOSE 80 443
+
+# install openssl & generate a self-signed ssl certificate
+RUN apk add --update openssl && \
+  rm -rf /var/cache/apk/* && \
+  mkdir /etc/nginx/ssl && \
+  openssl req -x509 -days 365 -nodes -newkey rsa:2048 \
+  -keyout /etc/nginx/ssl/self.key -out /etc/nginx/ssl/self.crt \
+  -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.nginx-learn.com"
 
 # start nginx in the foreground (this will keep the container alive)
 CMD ["nginx", "-g", "daemon off;"]
