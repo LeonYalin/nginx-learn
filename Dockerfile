@@ -32,7 +32,8 @@ RUN cd nginx-1.21.6 && ./configure \
   --with-http_ssl_module \
   --with-http_v2_module \
   --with-http_image_filter_module=dynamic \
-  --modules-path=/etc/nginx/modules
+  --modules-path=/etc/nginx/modules \
+  --without-http_autoindex_module
 
 # compile and install the nginx binary
 RUN cd nginx-1.21.6 && make && make install

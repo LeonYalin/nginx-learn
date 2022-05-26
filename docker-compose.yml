@@ -7,4 +7,5 @@ services:
       - 443:443
     volumes:
       - ./src/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./src/config/.htpasswd:/etc/nginx/.htpasswd
       - ./src/www:/www
